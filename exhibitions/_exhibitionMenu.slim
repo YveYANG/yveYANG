@@ -1,0 +1,32 @@
+div class="menu"
+    div class="exhibNav"
+        div class="top"
+            div class="col-10"
+                a class="exhibition headGrey" EXHIBITIONS
+            div class="col-10" id="exList"    
+                - for exhibition in contentful.exhibition.order("showNumber", "desc").select { |exhibition| exhibition.upcoming? }
+                    div class="year upcoming conceal"
+                        <!-- @include showUpcoming -->           
+                                     
+                div class="year current conceal" 
+                    h1 Current
+                    - for exhibition in contentful.exhibition.order("showNumber", "desc").select { |exhibition| exhibition.current? }
+                        <!-- @include show --> 
+                
+                div class="previous" id="showLess" Previous Exhibitions...
+                div class="year pastShows" 
+                    h1 class="conceal" Past
+                    - for exhibition in contentful.exhibition.order("showNumber", "desc").select { |exhibition| exhibition.past? }
+                        <!-- @include showListing -->
+                - if contentful.exhibition.length > 7        
+                    div class="more" id="loadMore" More Exhibitions...
+                        
+        div class="base"
+            div class="col-10"
+                a href="<!-- @path artist.slim -->"  ARTISTS
+            div class="col-10"
+                a href="<!-- @path about.slim -->"  ABOUT 
+            - for news in contentful.news
+                - if news.current?
+                    div class="col-10 lasOf"
+                        a class="exhibition headGrey" href="<!-- @path #{news.url}.html -->"  NEWS 

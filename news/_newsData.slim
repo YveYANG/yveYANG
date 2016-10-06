@@ -1,0 +1,12 @@
+a class="newsShow" href="<!-- @path #{news.url}.html -->"
+    - if news.month >= 10
+        span = news.month
+    - else
+        span 0
+        span = news.month
+    span .
+    - if news.day >= 10
+        span = news.day
+    - else
+        span 0
+        span = news.day

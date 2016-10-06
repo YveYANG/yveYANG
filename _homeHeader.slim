@@ -1,0 +1,12 @@
+div class="header"
+    div class="row greyFind"
+        div class="col-3 offset-3 title"
+            a href="<!-- @path #{exhibition.url}.html -->" class="headGrey" = exhibition.title
+        div class="col-2 artist"
+            a href="<!-- @path #{exhibition.url}.html -->"  class="headGrey" = exhibition.artist
+        div class="col-2 date"
+            a href="<!-- @path #{exhibition.url}.html -->"  class="headGrey" 
+                span = exhibition.startDate
+                span &ndash;
+                span = exhibition.endDate
+/ All link to current exhibition!!!            

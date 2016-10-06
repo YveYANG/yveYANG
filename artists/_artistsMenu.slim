@@ -1,0 +1,25 @@
+div class="menu"
+    div class="artistsNav"
+        div class="top"
+            - for exhibition in contentful.exhibition
+                - if exhibition.current?
+                    div class="col-10"
+                        a class="exhibition headGrey" href="<!-- @path #{exhibition.url}.html -->"  EXHIBITIONS
+            div class="col-10"
+                a  ARTISTS
+            div class="col-10 artists"        
+                div class="previous" id="showLess" Less Artists...
+                ul id="artList"
+                    - for artist in contentful.artist.order("name", "asc")
+                        li
+                            a href="#{artist.url}.html" = artist.name
+                - if contentful.artist.length > 20        
+                    div id="loadMore" More Artists...
+        
+        div class="base"                
+            div class="col-10"
+                a href="<!-- @path about.slim -->"  ABOUT                     
+            - for news in contentful.news
+                - if news.current?
+                    div class="col-10 lastOf"
+                        a class="exhibition headGrey" href="<!-- @path #{news.url}.html -->"  NEWS

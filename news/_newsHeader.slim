@@ -1,0 +1,16 @@
+div class="header newsLine"
+    div class="row"
+        div class="col-3 offset-3 dot"
+            - if news.month >= 10
+                span = news.month
+            - else
+                span 0
+                span = news.month
+        div class="col-2 artist dot"
+            - if news.day >= 10
+                span = news.day
+            - else
+                span 0
+                span = news.day
+        div class="col-2 date"
+            span = news.year
