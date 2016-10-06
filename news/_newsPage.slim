@@ -19,7 +19,7 @@ html
             div class="row leftWrapper"
                 div class="col-10"
                     div class="col-5 text float" 
-                        h1 = news.title
+                        h1 ==markdown(news.title)
                         ==markdown(news.content)
                     - for image in news.images
                         div class="col-4-half float sticky newsImage"   
