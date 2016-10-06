@@ -1,0 +1,6 @@
+div class="col-10 artists mobileMenuArt"
+    ul    
+        - for artist in contentful.artist.order("name", "asc")
+            li
+                a href="<!-- @path #{artist.url}.html -->" = artist.name
+    

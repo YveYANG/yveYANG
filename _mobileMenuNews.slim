@@ -1,0 +1,12 @@
+div class="col-10 mobileMenuNews"
+    - news_by_year = contentful.news.each_with_object({}) do |object, accumulator|
+        - accumulator[object.year] ||= []
+        - accumulator[object.year] << object
+        - accumulator
+
+    - news_by_year.reverse_each do |year, news_for_year|
+        /- news_for_year = news_for_year.sort { @sys.firstpublishedat }
+        div class="year"
+            h1 = year
+            - news_for_year.sort_by{|row| [row[:month], row[:day]] }.reverse.each do |news|
+                <!-- @include newsData -->

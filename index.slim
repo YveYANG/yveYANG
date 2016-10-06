@@ -1,0 +1,142 @@
+doctype html
+html
+    head
+        title Yve YANG Gallery
+        meta charset="utf-8"
+        meta name="viewport" content="width=device-width, initial-scale=1.0"
+        link rel="icon" type="image/png"
+        <!-- @stylesheet style -->
+        script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"
+    
+    body
+        a class="logo" href="<!-- @path index.slim -->"
+            img src="<!-- @path yve-yang-logo.svg -->" 
+            
+        - for exhibition in contentful.exhibition.order("showNumber", "desc").select { |exhibition| exhibition.current? }
+            <!-- @include _homeHeader -->    
+        
+            div class="gridWrap home"
+                div class="row"
+                    <!-- @include _home -->
+            
+        <!-- @include _homeMenu -->
+        <!-- @include _form -->
+        
+        div class="mobileMenuWrap"
+            div class="mobileMenu" 
+                a id="mobileMenuButton" MENU
+            div class="mobileMenuClose none" 
+                a id="mobileMenuClose" Close
+            <!-- @include _mobileMenu -->
+            <!-- @include _mobileMenuExhibition -->
+            <!-- @include _mobileMenuArtist -->
+            <!-- @include _mobileMenuNews -->
+            
+    javascript: 
+        $(document).ready(function(){
+        //NEWSLETTER FORM
+        
+        // PLACEHOLDER WIDTH
+        $("input[placeholder]").each(function () {
+            $(this).attr('size', $(this).attr('placeholder').length);
+        });
+        // Show Hide Submit    
+          $('.mc-input-submit').hide();
+            $('#message').keyup(function(){
+                if($(this).val().length !=0){
+                    $('.mc-input-submit').fadeIn();
+                }
+                else
+                {
+                    $('.mc-input-submit').fadeOut();        
+                }
+            });    
+        // AJAX Request    
+          $('#mc-form').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+              url: 'http://yveyang.us13.list-manage.com/subscribe/post-json?u=ada7627619f988d93c8b106db&amp;id=b21e7496ca&c=?',
+              type: 'POST',
+              data: $(this).serialize(),
+              dataType: 'jsonp',
+              success: function(data) {
+                console.log (data);
+                var message = data.msg.replace("0 - ","").replace("(#6592)","").replace("@","@.").replace(" is invalid"," looks invalid.").replace(". ",". \n").split("(the")[0];  
+        // Sucess Message          
+                if (data.result == "success") {
+                  $('#mc-form-error').hide();
+                  $('#mc-form-error2').hide();    
+                  $('#mc-form-success').fadeIn().delay(7500).fadeOut('slow');
+                }
+        // Fail Message          
+                else {
+                  $('#mc-form-success').fadeOut();    
+                  $('#mc-form-error').fadeIn();
+                  $('#mc-form-error2').fadeIn(); 
+                  $('#mc-form-error2')[0].innerHTML = "<pre>" + message + "</pre>";
+                }
+              }
+            })
+          });
+          
+        
+        // Header
+        
+        $(".headGrey").hover(function(){
+            $(".headGrey").addClass("fifty");  //Add the active class to the area is hovered
+          }, function () {
+              $(".headGrey").removeClass("fifty");
+        });
+        $(".headGrey").click(function(){
+          $( ".headGrey" ).removeClass("fifty");
+        });
+          
+        // REMOVE CLICK BUTTON TOGGLE  
+        function remover() {
+            if ($(window).width() < 960) {
+                $('.show ul').removeClass('listing');
+            }
+            else {
+                $('.show ul').addClass('listing');
+            }
+        }
+
+        window.onresize = remover;
+        window.onload = remover;
+        
+        // MENU
+        $('#mobileMenuButton').click(function() {
+            $('.mobileMenuWrap').addClass('fullHeight');
+            $('.mobileMenuFour').show();
+            $('.gridWrap').hide();
+            $('.mobileMenuClose').removeClass('none');
+                // Hide All other Menus
+            $('.mobileMenuNews').hide();
+            $('.mobileMenuArt').hide();
+            $('.mobileMenuEx').hide();
+            });
+        
+        $('#mobEx').click(function() {
+            $('.mobileMenuFour').hide();
+            $('.mobileMenuEx').show();
+            });
+        $('#mobNews').click(function() {
+            $('.mobileMenuFour').hide();
+            $('.mobileMenuNews').show();
+            });
+        $('#mobArt').click(function() {
+            $('.mobileMenuFour').hide();
+            $('.mobileMenuArt').show();
+            });    
+        
+        $('#mobileMenuClose').click(function() {
+            $('.mobileMenuWrap').removeClass('fullHeight');
+            $('.gridWrap').show();
+            $('.mobileMenuClose').addClass('none');
+            $('.mobileMenuFour').hide();
+            $('.mobileMenuNews').hide();
+            $('.mobileMenuArt').hide();
+            $('.mobileMenuEx').hide();
+            });
+            
+        });

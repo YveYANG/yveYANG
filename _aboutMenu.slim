@@ -1,0 +1,16 @@
+div class="menu"
+    div class="aboutNav"
+        div class="top"
+            - for exhibition in contentful.exhibition
+                - if exhibition.current?
+                    div class="col-10"
+                        a class="exhibition headGrey" href="<!-- @path #{exhibition.url}.html -->"  EXHIBITIONS
+            div class="col-10"
+                a href="<!-- @path artist.slim -->"  ARTISTS
+            div class="col-10"
+                a ABOUT
+        div class="base"        
+            - for news in contentful.news
+                - if news.current?
+                    div class="col-10 lastOf"
+                        a class="exhibition headGrey" href="<!-- @path #{news.url}.html -->"  NEWS

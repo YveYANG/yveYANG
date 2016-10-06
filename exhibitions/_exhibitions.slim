@@ -1,0 +1,149 @@
+doctype html
+html
+    head
+        title Yve YANG Gallery
+        meta charset="utf-8"
+        meta name="viewport" content="width=device-width, initial-scale=1.0"
+        link rel="icon" type="image/png" href="<!-- @path favicon.ico -->"
+        <!-- @stylesheet normalize -->
+        <!-- @stylesheet fonts -->
+        <!-- @stylesheet style -->
+        script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"
+        <!-- @javascript stickyfill.js -->
+    
+    body
+        a href="<!-- @path index.slim -->"
+            img class="logo" src="<!-- @path yve-yang-logo.svg -->"
+
+        <!-- @include _exhibitionHeader -->
+            
+        div class="gridWrap exhibition"
+            div class="row leftWrapper"
+                div class="col-10"
+                    div class="col-5 text" ==markdown(exhibition.description)
+                    div class="col-5"    
+                        div class="row"
+                            div class="col-7-half float pad" ==markdown(exhibition.participants)
+                            div class="col-2-half floatR secondInfo" ==markdown(exhibition.event)
+                    div class="col-4-half poster float sticky"
+                        img src="#{exhibition.poster}"
+                    
+                     
+                    - for image in exhibition.images
+                        div class="col-8-next capt float sticky"
+                            - if image.video?
+                                div class="videoWrap" ==markdown(image.link)
+                                    
+                            - else
+                                img src="#{image.image}"   
+                    - if exhibition.images.length >= 2           
+                        div class="col-7-half" id="resize"    
+        <!-- @include _exhibitionMenu -->
+        
+        div class="mobileMenuWrap"
+            div class="mobileMenu" 
+                a id="mobileMenuButton" MENU
+            div class="mobileMenuClose none" 
+                a id="mobileMenuClose" Close
+            <!-- @include _mobileMenu -->
+            <!-- @include _mobileMenuExhibition -->
+            <!-- @include _mobileMenuArtist -->
+            <!-- @include _mobileMenuNews -->
+            
+    javascript:
+        // Add "this" to last of work
+        $(window).load(function(){
+            $('.capt').last().addClass('this');
+            
+            $('#resize').height(($(window).height() - $('.this').height()));
+            $(window).resize(function () {
+                    $('#resize').height(($(window).height() - $('.this').height()));
+            });
+            
+            $('.sticky').Stickyfill();
+              
+        });
+        $(document).ready(function(){
+            var num_li = $(".listing").size();
+            var x=0;
+            var INCREMENT = 7;
+            var $groups = $('.listing');
+            var $conceal = $('.conceal');
+            getNextN($groups, x, INCREMENT).show();
+            
+            $("#loadMore").click(function() {
+                var $hiddenGroup = getNextN($groups, x, INCREMENT);
+                    x+=INCREMENT;
+                    var $groupToShow = getNextN($groups, x, INCREMENT);
+              $conceal.hide();
+              $hiddenGroup.hide();
+              $groupToShow.show();
+                    $("#showLess").show();
+              if (x+INCREMENT >= num_li) $(this).hide();
+            });
+            
+            $("#showLess").click(function() {
+                var $hiddenGroup = getNextN($groups, x, INCREMENT);
+                    x-=INCREMENT;
+                    var $groupToShow = getNextN($groups, x, INCREMENT);
+              $hiddenGroup.hide();
+                $groupToShow.show();
+              if (x == 0) $(this).hide();
+              $("#loadMore").show();
+              if (x == 0) $conceal.show();
+            });
+            
+        function getNextN($el, x, n) {
+            return $el.slice(x,x+n);
+        }
+        
+            // REMOVE CLICK BUTTON TOGGLE  
+        function remover() {
+            if ($(window).width() < 800) {
+                $('.mobileMenuEx .pastShow .show ul').removeClass('listing');
+            }
+            else {
+                $('.mobileMenuEx .pastShow .show ul').addClass('listing');
+            }
+        }
+
+        window.onresize = remover;
+        window.onload = remover;
+        
+        // MENU
+            $('#mobileMenuButton').click(function() {
+                $('.mobileMenuWrap').addClass('fullHeight');
+                $('.mobileMenuFour').show();
+                $('.gridWrap').hide();
+                $('.mobileMenuClose').removeClass('none');
+                    // Hide All other Menus
+                $('.mobileMenuNews').hide();
+                $('.mobileMenuArt').hide();
+                $('.mobileMenuEx').hide();
+                });
+
+            $('#mobEx').click(function() {
+                $('.mobileMenuFour').hide();
+                $('.mobileMenuEx').show();
+                });
+            $('#mobNews').click(function() {
+                $('.mobileMenuFour').hide();
+                $('.mobileMenuNews').show();
+                });
+            $('#mobArt').click(function() {
+                $('.mobileMenuFour').hide();
+                $('.mobileMenuArt').show();
+                });    
+
+            $('#mobileMenuClose').click(function() {
+                $('.mobileMenuWrap').removeClass('fullHeight');
+                $('.gridWrap').show();
+                $('.mobileMenuClose').addClass('none');
+                $('.mobileMenuFour').hide();
+                $('.mobileMenuNews').hide();
+                $('.mobileMenuArt').hide();
+                $('.mobileMenuEx').hide();
+                });
+        });
+         
+        
