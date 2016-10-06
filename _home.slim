@@ -1,6 +1,0 @@
-- for home in contentful.home
-    - for exhibition in contentful.exhibition.order("showNumber", "desc").select { |exhibition| exhibition.current? }
-            div class="col-5 offset-3 frontPage"
-                a href="<!-- @path #{exhibition.url}.html -->"
-                    img src="#{home.image}"
-            
