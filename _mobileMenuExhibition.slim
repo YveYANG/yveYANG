@@ -1,8 +1,7 @@
 div class="col-10 mobileMenuEx" id="list"
     div class="year upcoming conceal"
-        h1 Upcoming
         - for exhibition in contentful.exhibition.order("showNumber", "desc").select { |exhibition| exhibition.upcoming? }
-            <!-- @include show -->   
+            <!-- @include showUpcoming -->   
                                      
     div class="year current conceal" 
         h1 Current
