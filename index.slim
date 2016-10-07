@@ -11,7 +11,7 @@ html
     body
         a class="logo" href="<!-- @path index.slim -->"
             img src="<!-- @path yve-yang-logo.svg -->" 
-            
+        / Fei    
         - for exhibition in contentful.exhibition.order("showNumber", "desc").select { |exhibition| exhibition.current? }
             <!-- @include _homeHeader -->    
         
