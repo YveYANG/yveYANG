@@ -10,8 +10,7 @@ html
     
     body
         a class="logo" href="<!-- @path index.slim -->"
-            img src="<!-- @path yve-yang-logo.svg -->" 
-        / Fei    
+            img src="<!-- @path yve-yang-logo.svg -->"     
         - for exhibition in contentful.exhibition.order("showNumber", "desc").select { |exhibition| exhibition.current? }
             <!-- @include _homeHeader -->    
         
@@ -35,7 +34,7 @@ html
     javascript: 
         $(document).ready(function(){
         //NEWSLETTER FORM
-        
+        console.log (Liao Fei Data);
         // PLACEHOLDER WIDTH
         $("input[placeholder]").each(function () {
             $(this).attr('size', $(this).attr('placeholder').length);
