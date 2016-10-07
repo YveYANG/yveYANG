@@ -34,8 +34,7 @@
          },
          "home": 
          {
-           "name": "Home",
-           "template": "_home.slim"
+           "name": "Home"
          },   
          "artist": 
          {
