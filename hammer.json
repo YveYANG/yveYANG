@@ -34,7 +34,10 @@
          },
          "home": 
          {
-           "name": "Home"
+           "name": "Home",
+           "template": "_index.slim",
+           "urlAliasSource": "name",
+           "renderOnBuild": true
          },   
          "artist": 
          {
