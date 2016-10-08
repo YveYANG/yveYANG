@@ -9,7 +9,7 @@ html
         script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"
     
     body
-        a class="logo" href="<!-- @path index.slim -->"
+        a class="logo" href="http://www.yveyang.com"
             img src="<!-- @path yve-yang-logo.svg -->"     
         - for exhibition in contentful.exhibition.order("showNumber", "desc").select { |exhibition| exhibition.current? }
             div class="header"
