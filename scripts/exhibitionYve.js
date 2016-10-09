@@ -1,4 +1,4 @@
-$(window).load(function(){
+$(function(){
     $('.capt').last().addClass('this');
 
     $('#resize').height(($(window).height() - $('.this').height()));
