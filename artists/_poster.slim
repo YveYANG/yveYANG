@@ -42,7 +42,7 @@ html
             
     javascript:
         // Add "this" to last of work
-        $(window).load(function(){
+        $(window).bind("load", function(){
             $('.work').last().addClass('this');
             
             $('#resize').height(($(window).height() - $('.this').height()));

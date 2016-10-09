@@ -44,7 +44,7 @@ html
             
     javascript: 
         // Add "this" to last of work
-        $(window).load(function(){
+        $(window).bind("load", function(){
             $('.newsImage').last().addClass('this');
             
             $('#resize').height(($(window).height() - $('.this').height()));
