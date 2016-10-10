@@ -29,7 +29,8 @@ html
                             - else
                                 img src="#{image.image}"   
                                 ==markdown(image.title)
-                    div class="col-10" id="resize" 
+                    - if news.images.length >= 2                        
+                        div class="col-7-half" id="resize" 
         <!-- @include _newsMenu -->
         
         div class="mobileMenuWrap"
