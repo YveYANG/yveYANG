@@ -553,8 +553,13 @@ a.black:hover {
     }
 
 
-a.current.newShow{
+a.current.newsShow{
     display: block;
+    cursor:pointer;
+}
+
+.newsShow span {
+    cursor: pointer;
 }
 
 #newsData a{

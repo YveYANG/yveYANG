@@ -96,13 +96,13 @@ html
             var x=0;
             var INCREMENT = 22;
             var $groups = $('#newsData a');
-            getNextN($groups, x, INCREMENT).show().css("display", "block");
+            getNextN($groups, x, INCREMENT).show().css("display", "table");
             $("#loadMore").click(function() {
                 var $hiddenGroup = getNextN($groups, x, INCREMENT);
                     x+=INCREMENT;
                     var $groupToShow = getNextN($groups, x, INCREMENT);
               $hiddenGroup.hide();
-              $groupToShow.show().css("display", "block");
+              $groupToShow.show().css("display", "table");
                     $("#showLess").show();
               if (x+INCREMENT >= num_li) $(this).hide();
             });
@@ -111,7 +111,7 @@ html
                     x-=INCREMENT;
                     var $groupToShow = getNextN($groups, x, INCREMENT);
               $hiddenGroup.hide();
-                $groupToShow.show().css("display", "block");
+                $groupToShow.show().css("display", "table");
               if (x == 0) $(this).hide(); 
               $("#loadMore").show();
             });
