@@ -109,6 +109,10 @@ a.headGrey:visited{
     color: black;
 }
 
+a.headGrey span {
+    cursor: pointer;
+}
+
 /* 
     Menu
     -------------------------------------- */
