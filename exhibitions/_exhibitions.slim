@@ -46,9 +46,6 @@ html
             div class="mobileMenuClose none" 
                 a id="mobileMenuClose" Close
             <!-- @include _mobileMenu -->
-            <!-- @include _mobileMenuExhibition -->
-            <!-- @include _mobileMenuArtist -->
-            <!-- @include _mobileMenuNews -->
     
     javascript:
         // Add "this" to last of work
@@ -116,23 +113,26 @@ html
                 $('.mobileMenuFour').show();
                 $('.gridWrap').hide();
                 $('.mobileMenuClose').removeClass('none');
-                    // Hide All other Menus
+                    // Hide All SubMenus
                 $('.mobileMenuNews').hide();
                 $('.mobileMenuArt').hide();
                 $('.mobileMenuEx').hide();
                 });
 
             $('#mobEx').click(function() {
-                $('.mobileMenuFour').hide();
-                $('.mobileMenuEx').show();
+                $('.mobileMenuEx').toggle();
+                $('.mobileMenuNews').hide();
+                $('.mobileMenuArt').hide();
                 });
             $('#mobNews').click(function() {
-                $('.mobileMenuFour').hide();
-                $('.mobileMenuNews').show();
+                $('.mobileMenuNews').toggle();
+                $('.mobileMenuEx').hide();
+                $('.mobileMenuArt').hide();
                 });
             $('#mobArt').click(function() {
-                $('.mobileMenuFour').hide();
-                $('.mobileMenuArt').show();
+                $('.mobileMenuArt').toggle();
+                $('.mobileMenuNews').hide();
+                $('.mobileMenuEx').hide();
                 });    
 
             $('#mobileMenuClose').click(function() {

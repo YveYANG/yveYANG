@@ -16,6 +16,13 @@ html
 
         <!-- @include _artistsMenu -->
         
+        div class="gridWrap about artistsMobileFix"
+            div class="row leftWrapper"
+                div class="col-10"
+                    - for artist in contentful.artist.order("name", "asc")
+                        li
+                            a href="#{artist.url}.html" = artist.name
+        
         div class="mobileMenuWrap"
             div class="mobileMenu" 
                 a id="mobileMenuButton" MENU
@@ -34,23 +41,26 @@ html
                 $('.mobileMenuFour').show();
                 $('.gridWrap').hide();
                 $('.mobileMenuClose').removeClass('none');
-                    // Hide All other Menus
+                    // Hide All SubMenus
                 $('.mobileMenuNews').hide();
                 $('.mobileMenuArt').hide();
                 $('.mobileMenuEx').hide();
                 });
 
             $('#mobEx').click(function() {
-                $('.mobileMenuFour').hide();
-                $('.mobileMenuEx').show();
+                $('.mobileMenuEx').toggle();
+                $('.mobileMenuNews').hide();
+                $('.mobileMenuArt').hide();
                 });
             $('#mobNews').click(function() {
-                $('.mobileMenuFour').hide();
-                $('.mobileMenuNews').show();
+                $('.mobileMenuNews').toggle();
+                $('.mobileMenuEx').hide();
+                $('.mobileMenuArt').hide();
                 });
             $('#mobArt').click(function() {
-                $('.mobileMenuFour').hide();
-                $('.mobileMenuArt').show();
+                $('.mobileMenuArt').toggle();
+                $('.mobileMenuNews').hide();
+                $('.mobileMenuEx').hide();
                 });    
 
             $('#mobileMenuClose').click(function() {

@@ -721,12 +721,8 @@ input, pre {
 }
 
 .mobileMenuEx, .mobileMenuArt, .mobileMenuNews{
-    margin-top: -1.2em;
     width: 100%;
     min-height: 100%;
-    background-color: white;
-    position: absolute;
-    top: 60px;
     left: 24px;
     display: none;
     z-index: 1003;
@@ -734,7 +730,6 @@ input, pre {
 
 .mobileMenuArt, .mobileMenuEx, .mobileMenuNews {
     position: relative;
-    top: 2.4em;
     left: 0;
 }
 
@@ -742,7 +737,15 @@ input, pre {
     display: block;
 }
 
+.mobileMenuArt {
+    padding-bottom: 1.2em;
+}
+
 .none {display:none;}
+
+.artistsMobileFix {
+    display: none;
+}
 
 
 /*  
@@ -836,9 +839,13 @@ input, pre {
     }
     .none {display: none;}
     
+    .artistsMobileFix {
+        display: block;
+}
+    
 }
 
-@media (max-height : 700px) {
+@media (max-height : 640px) {
     
    .artistsNav .top, .artistsNav .base, .exhibNav .top, .exhibNav .base, aboutNav .top, .aboutNav .base {
         position: relative;
