@@ -18,16 +18,16 @@ html
         div class="gridWrap artists"
             div class="row leftWrapper"
                 div class="col-10"
-                - for image in artist.images
-                    div class="col-7-half float sticky work"
-                        - if image.video?
-                            div class="videoWrap" ==markdown(image.link)
-                            p ==markdown(image.title)
-                        - else
-                            img src="#{image.image}"   
-                             ==markdown(image.title)
-                - if artist.images.length >= 2                        
-                    div class="col-7-half" id="resize" 
+                    - for image in artist.images
+                        div class="col-7-half float sticky work"
+                            - if image.video?
+                                div class="videoWrap" ==markdown(image.link)
+                                p ==markdown(image.title)
+                            - else
+                                img src="#{image.image}"   
+                                 ==markdown(image.title)
+                    - if artist.images.length >= 2                        
+                        div class="col-7-half" id="resize" 
         <!-- @include _artistsMenu -->
         
         div class="mobileMenuWrap"

@@ -3,7 +3,7 @@ div class="menu"
         div class="top"
             div class="col-10"
                 a class="exhibition headGrey" EXHIBITIONS
-            div class="col-10" id="exList"    
+            div class="col-10 alignment" id="exList"    
                 - for exhibition in contentful.exhibition.order("showNumber", "desc").select { |exhibition| exhibition.upcoming? }
                     div class="year upcoming conceal"
                         <!-- @include showUpcoming -->           

@@ -66,7 +66,7 @@ a:hover {
 
 img {
 	margin:0;
-	vertical-align:bottom;
+/*	vertical-align:bottom;*/
 }
 
 ul {
@@ -99,7 +99,7 @@ iframe {
 .header {
     position: fixed;
     line-height: 1;
-    padding: 24px 24px 24px;
+    padding: 24px 24px 20px;
     width: calc(100%);
     z-index: 1001;
     background-color: white;
@@ -151,8 +151,7 @@ a.headGrey span {
 }
 
 .aboutNav, .newsNav {
-    display: block;
-    line-height: 1.2;
+    margin-top: -1px;
 }
 
 .aboutNav .bottom {
@@ -169,7 +168,7 @@ a.headGrey span {
 }
 
 .artistsNav .top, .exhibNav .top, .aboutNav .top {
-    top: 24px;
+    top: 23px;
 }
 
 .artistsNav .base, .exhibNav .base, .aboutNav .base{
@@ -328,7 +327,7 @@ a.headGrey span {
 }
 
 .gridWrap.about, .gridWrap.news, .gridWrap.exhibition, .gridWrap.artists {
-    padding: 63px 24px 24px;
+    padding: 59px 24px 24px;
 }
 
 .float {
@@ -369,6 +368,10 @@ a {
     height: auto;
     margin, padding: 0;
     z-index: 999999999;
+}
+
+.logo img {
+    vertical-align: bottom;
 }
 
 .text {
@@ -549,7 +552,7 @@ a.black:hover {
 }
 
 .newsPage .sticky {
-    top: 63px;
+    top: 59px;
 }
 
 .dot::after {
@@ -595,13 +598,13 @@ a.current.newsShow{
 img {
     max-width: 100%;
     height: auto;
-    max-height: calc(100vh - 8.4em);
+    max-height: calc(100vh - 8.9em);
 }
 
 .sticky {
     position: -webkit-sticky;
     position: sticky;
-    top: 63px;
+    top: 59px;
 }
 
 .sticky:before,
@@ -716,7 +719,7 @@ input, pre {
     top: 0;
     left: 0;
     line-height: 1.2;
-    padding: 24px 24px 24px;
+    padding: 23px 24px 24px;
     z-index: 1006;
 }
 
@@ -787,7 +790,7 @@ input, pre {
     .header {
         position: relative;
         line-height: 1.2;
-        padding: 60px 24px 24px;
+        padding: 60px 24px 20px;
         width: calc(100%);
         z-index: 1001;
         background-color: white;
