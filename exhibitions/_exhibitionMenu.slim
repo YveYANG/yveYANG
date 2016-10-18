@@ -28,5 +28,5 @@ div class="menu"
                 a href="<!-- @path about.slim -->"  ABOUT 
             - for news in contentful.news
                 - if news.current?
-                    div class="col-10 lasOf"
+                    div class="col-10 lastOf"
                         a class="exhibition headGrey" href="<!-- @path #{news.url}.html -->"  NEWS 
