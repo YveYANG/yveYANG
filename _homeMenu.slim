@@ -10,6 +10,6 @@ div class="menu"
             a href="<!-- @path about.slim -->"  ABOUT
         - for news in contentful.news
             - if news.current?
-                div class="col-10"
+                div class="col-10 exCol"
                     a class="exhibition" href="news/#{news.url}.html"  NEWS
     

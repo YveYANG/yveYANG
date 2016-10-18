@@ -146,7 +146,7 @@ a.headGrey span {
     height: 100%;
 }
 
-.homeNav .bottom {
+.homeNav .bottom, .homeNav .exCol {
     margin-bottom: -3px;
 }
 
