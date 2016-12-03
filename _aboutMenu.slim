@@ -9,8 +9,8 @@ div class="menu"
                 a href="<!-- @path artist.slim -->"  ARTISTS
             div class="col-10"
                 a ABOUT
-        div class="base"        
+        div class="base"
             - for news in contentful.news
                 - if news.current?
                     div class="col-10 lastOf"
-                        a class="exhibition headGrey" href="<!-- @path #{news.url}.html -->"  NEWS
+                        a class="exhibition headGrey" href="<!-- @path #{news.url}.html -->"  NEWS 
