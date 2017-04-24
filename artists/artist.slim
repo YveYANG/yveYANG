@@ -20,7 +20,6 @@ html
                     - for artist in contentful.artist.order("name", "asc")
                         li
                             a href="#{artist.url}.html" = artist.name
-        
         <!-- @include _artistsMenu -->
         
         div class="mobileMenuWrap"
