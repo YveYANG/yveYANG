@@ -1,10 +1,9 @@
 div class="menu"
     div class="artistsNav"
         div class="top"
-            - for exhibition in contentful.exhibition
-                - if exhibition.current?
-                    div class="col-10"
-                        a class="exhibition headGrey" href="<!-- @path #{exhibition.url}.html -->"  EXHIBITIONS
+            - for exhibition in contentful.exhibition.order("showNumber", "desc").first(1)
+                div class="col-10 greyFind"
+                    a class="exhibition headGrey" href="<!-- @path #{exhibition.url}.html -->"  EXHIBITIONS
             div class="col-10"
                 a  ARTISTS
             div class="col-10 artists"        
@@ -18,7 +17,7 @@ div class="menu"
         
         div class="base"                
             div class="col-10"
-                a href="<!-- @path about.slim -->"  ABOUT                     
+                a href="<!-- @path about.html -->" ABOUT      
             - for news in contentful.news
                 - if news.current?
                     div class="col-10 lastOf"

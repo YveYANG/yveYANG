@@ -9,13 +9,6 @@
         "id": "9q32izct3044",
         "contentTypes":
        {
-         "about": 
-         {
-           "name": "About",
-           "template": "about.slim",
-           "urlAliasSource": "url",
-           "renderOnBuild": true
-         },
          "exhibition": 
          {
            "name": "Exhibition",
@@ -45,6 +38,13 @@
            "template": "artists/_poster.slim", 
            "urlAliasPrefix": "artists",
            "urlAliasSource": "url",
+           "renderOnBuild": true
+         },
+         "about": 
+         {
+           "name": "About",
+           "template": "about.slim",
+           "urlAliasSource": "name",
            "renderOnBuild": true
          }
        }
